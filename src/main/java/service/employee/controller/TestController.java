@@ -7,7 +7,6 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import service.employee.repository.Employees;
 import service.employee.repository.EmployeesInterface;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class TestController {
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     @ResponseBody
     @Cacheable(cacheNames = "employee")
-    public Employees get(@RequestParam(value = "Id") int Id) {
+    public Employees get(@RequestParam(value = "id") int Id) {
 
         int tableSize = employeesInterface.findAll().size();
 
