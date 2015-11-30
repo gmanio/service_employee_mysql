@@ -26,11 +26,24 @@ public class TestController {
     @Cacheable(cacheNames = "employee")
     public Employees get(@RequestParam(value = "id") int Id) {
 
-        int tableSize = employeesInterface.findAll().size();
+//        int tableSize = employeesInterface.findAll().size();
 
-        logger.info("Size of Table is :: " + String.valueOf(tableSize));
+//        logger.info("Size of Table is :: " + String.valueOf(tableSize));
 
         return employeesInterface.findOne(Id);
+    }
+
+    @RequestMapping(value = "/getGender", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Employees> getGender(@RequestParam(value = "gender") String gender){
+        return employeesInterface.findByGender(gender);
+    }
+
+
+    @RequestMapping(value = "/getName", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Employees> getName(@RequestParam(value = "name") String lastname){
+        return employeesInterface.findByLastName(lastname);
     }
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)

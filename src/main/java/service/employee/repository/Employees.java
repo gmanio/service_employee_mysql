@@ -1,16 +1,14 @@
 package service.employee.repository;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gmanpark on 2015-11-30.
  */
 @Entity
 @Table(name="employees")
-
 public class Employees {
     @Id
     @Column(name = "emp_no", nullable = false)
@@ -18,13 +16,25 @@ public class Employees {
     @Column(name = "birth_date", nullable = false)
     private String birth_date;
     @Column(name = "first_name", nullable = false)
-    private String first_name;
+    private String firstName;
     @Column(name = "last_name", nullable = false)
-    private String last_name;
+    private String lastName;
     @Column(name = "gender", nullable = false)
     private String gender;
     @Column(name = "hire_date", nullable = false)
     private String hire_date;
+
+    @OneToMany
+    @JoinColumn(name="emp_no")
+    private List<Salaries> sararies = new ArrayList<Salaries>();
+
+    public List<Salaries> getSararies() {
+        return sararies;
+    }
+
+    public void setSararies(List<Salaries> sararies) {
+        this.sararies = sararies;
+    }
 
     public int getEmp_no() {
         return emp_no;
@@ -43,19 +53,19 @@ public class Employees {
     }
 
     public String getFirst_name() {
-        return first_name;
+        return firstName;
     }
 
     public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+        this.firstName = first_name;
     }
 
     public String getLast_name() {
-        return last_name;
+        return lastName;
     }
 
     public void setLast_name(String last_name) {
-        this.last_name = last_name;
+        this.lastName = last_name;
     }
 
     public String getGender() {
