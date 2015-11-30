@@ -28,6 +28,8 @@ repositories {
 
 
 dependencies {
+    compile("org.springframework:spring-context")
+    compile("org.springframework.boot:spring-boot-starter")
     compile('org.springframework.boot:spring-boot-starter-aop')
     compile('org.springframework.boot:spring-boot-starter-batch')
     compile('org.springframework.boot:spring-boot-starter-cache')
@@ -36,8 +38,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-jdbc')
     compile('org.springframework.boot:spring-boot-starter-social-facebook')
     compile('org.springframework.boot:spring-boot-starter-web')
-    runtime('mysql:mysql-connector-java')
-    testCompile('org.springframework.boot:spring-boot-starter-test') 
+    compile("mysql:mysql-connector-java:5.1.31")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 
