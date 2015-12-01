@@ -11,15 +11,16 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name="dept_emp")
-public class DepartmentEmployee implements Serializable{
+public class DepartmentEmployee{
     @Id
     @Column(name = "emp_no", nullable = true)
     private int empNo;
 
-    @Column(name = "dept_no", nullable = true)
+    @Column(name = "dept_no", nullable = true, insertable = false, updatable = false)
     private String deptNo;
 
-/*    @OneToOne
+    @OneToOne
+    @JoinColumn(name="dept_no", referencedColumnName = "dept_no")
     private Departments departments;
 
     public Departments getDepartments() {
@@ -28,7 +29,7 @@ public class DepartmentEmployee implements Serializable{
 
     public void setDepartments(Departments departments) {
         this.departments = departments;
-    }*/
+    }
 
     public int getEmpNo() {
         return empNo;
