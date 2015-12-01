@@ -10,6 +10,7 @@ public class Salaries {
     @Id
     @Column(name = "emp_no", nullable = false)
     private int emp_no;
+
     @Column(name = "salary", nullable = false)
     private String salary;
 
@@ -18,10 +19,6 @@ public class Salaries {
 
     @Column(name = "to_date", nullable = false)
     private String to_date;
-
-    public int getEmp_no() {
-        return emp_no;
-    }
 
     public void setEmp_no(int emp_no) {
         this.emp_no = emp_no;
