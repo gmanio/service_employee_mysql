@@ -42,8 +42,8 @@ public class Employees implements Serializable {
         this.departmentEmployee = departmentEmployee;
     }
 
-    @OneToMany(fetch=FetchType.LAZY)
-    @JoinColumns({@JoinColumn(name="emp_no")})
+    @OneToMany(fetch=FetchType.EAGER)
+    @JoinColumn(name="emp_no")
     private List<Salaries> sararies = new ArrayList<Salaries>();
 
     public List<Salaries> getSararies() {

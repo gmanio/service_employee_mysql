@@ -6,14 +6,14 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'spring-boot' 
+apply plugin: 'spring-boot'
 
 jar {
     baseName = 'sample'
@@ -26,11 +26,9 @@ repositories {
     mavenCentral()
 }
 
-
 dependencies {
-    compile("org.springframework:spring-context")
+    compile("org.springframework.boot:spring-boot-devtools")
     compile("org.springframework.boot:spring-boot-starter")
-    compile('org.springframework.boot:spring-boot-starter-aop')
     compile('org.springframework.boot:spring-boot-starter-batch')
     compile('org.springframework.boot:spring-boot-starter-cache')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -39,15 +37,6 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-social-facebook')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile("mysql:mysql-connector-java:5.1.31")
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-}
-
-
-eclipse {
-    classpath {
-         containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
-         containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
-    }
 }
 
 task wrapper(type: Wrapper) {
