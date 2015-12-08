@@ -1,37 +1,44 @@
 package service.employee.repository;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import javafx.scene.input.DataFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by gmanpark on 2015-11-30.
  */
 @Entity
 @Table(name="employees")
-public class Employees implements Serializable {
+public class Employees{
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+
     @Id
     @Column(name = "emp_no", nullable = false)
-    private int emp_no;
-    @Column(name = "birth_date", nullable = false)
-    private String birth_date;
+    private int empNo;
+    @Column(name = "birth_date", columnDefinition="DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date birthDate;
+
     @Column(name = "first_name", nullable = false)
     private String firstName;
     @Column(name = "last_name", nullable = false)
     private String lastName;
     @Column(name = "gender", nullable = false)
     private String gender;
-    @Column(name = "hire_date", nullable = false)
-    private String hire_date;
+
+    @Column(name = "hire_date", columnDefinition="DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date hireDate;
 
     @OneToOne
-    @JoinColumn(name="emp_no")
+    @JoinColumn(name="empNo")
     private DepartmentEmployee departmentEmployee;
 
     public DepartmentEmployee getDepartmentEmployee() {
@@ -42,9 +49,8 @@ public class Employees implements Serializable {
         this.departmentEmployee = departmentEmployee;
     }
 
-    @OneToMany(fetch=FetchType.EAGER)
-    @JoinColumn(name="emp_no")
-    private List<Salaries> sararies = new ArrayList<Salaries>();
+    @OneToMany(mappedBy = "empNo")
+    private List<Salaries> sararies;
 
     public List<Salaries> getSararies() {
         return sararies;
@@ -52,6 +58,22 @@ public class Employees implements Serializable {
 
     public void setSararies(List<Salaries> sararies) {
         this.sararies = sararies;
+    }
+
+    public int getEmpNo() {
+        return empNo;
+    }
+
+    public void setEmpNo(int empNo) {
+        this.empNo = empNo;
+    }
+
+    public String getBirthDate() {
+        return this.format.format(birthDate);
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getFirstName() {
@@ -70,22 +92,6 @@ public class Employees implements Serializable {
         this.lastName = lastName;
     }
 
-    public int getEmp_no() {
-        return emp_no;
-    }
-
-    public void setEmp_no(int emp_no) {
-        this.emp_no = emp_no;
-    }
-
-    public String getBirth_date() {
-        return birth_date;
-    }
-
-    public void setBirth_date(String birth_date) {
-        this.birth_date = birth_date;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -94,16 +100,11 @@ public class Employees implements Serializable {
         this.gender = gender;
     }
 
-    public String getHire_date() {
-        return hire_date;
+    public String getHireDate() {
+        return this.format.format(hireDate);
     }
 
-    public void setHire_date(String hire_date) {
-        this.hire_date = hire_date;
-    }
-
-    @Override
-    public String toString() {
-        return "Employees{}";
+    public void setHireDate(Date hireDate) {
+        this.hireDate = hireDate;
     }
 }

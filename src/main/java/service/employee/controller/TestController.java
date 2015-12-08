@@ -7,6 +7,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import service.employee.repository.Employees;
 import service.employee.repository.EmployeesInterface;
+import service.employee.repository.Salaries;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,12 @@ public class TestController {
 //        int tableSize = employeesInterface.findAll().size();
 
 //        logger.info("Size of Table is :: " + String.valueOf(tableSize));
+
+        Employees emp = employeesInterface.findOne(Id);
+
+        for (Salaries salary : emp.getSararies()) {
+            salary.setSalary("1111111");
+        }
 
         return employeesInterface.findOne(Id);
     }

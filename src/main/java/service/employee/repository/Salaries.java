@@ -3,25 +3,34 @@ package service.employee.repository; /**
  */
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name="salaries")
+@IdClass(SalariesCompositeId.class)
 public class Salaries {
     @Id
-    @Column(name = "emp_no", nullable = false)
-    private int emp_no;
+    @Column(name = "emp_no", insertable = false, updatable = false)
+    private int empNo;
 
     @Column(name = "salary", nullable = false)
     private String salary;
 
-    @Column(name = "from_date", nullable = false)
-    private String from_date;
+    @Id
+    @Column(name = "from_date", insertable = false, updatable = false)
+    private Date fromDate;
 
-    @Column(name = "to_date", nullable = false)
-    private String to_date;
+    @Column(name = "to_date", columnDefinition="DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date toDate;
 
-    public void setEmp_no(int emp_no) {
-        this.emp_no = emp_no;
+    public int getEmpNo() {
+        return empNo;
+    }
+
+    public void setEmpNo(int empNo) {
+        this.empNo = empNo;
     }
 
     public String getSalary() {
@@ -32,19 +41,64 @@ public class Salaries {
         this.salary = salary;
     }
 
-    public String getFrom_date() {
-        return from_date;
+    public Date getFromDate() {
+        return fromDate;
     }
 
-    public void setFrom_date(String from_date) {
-        this.from_date = from_date;
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
     }
 
-    public String getTo_date() {
-        return to_date;
+    public Date getToDate() {
+        return toDate;
     }
 
-    public void setTo_date(String to_date) {
-        this.to_date = to_date;
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
+}
+
+@IdClass(SalariesCompositeId.class)
+class SalariesCompositeId implements Serializable {
+    private int empNo;
+    private Date fromDate;
+
+    public SalariesCompositeId() {
+
+    }
+
+    public SalariesCompositeId(int empNo, Date fromDate) {
+        this.empNo = empNo;
+        this.fromDate = fromDate;
+    }
+
+    public int getEmpNo() {
+        return empNo;
+    }
+
+    public void setEmpNo(int empNo) {
+        this.empNo = empNo;
+    }
+
+    public Date getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return ((o instanceof SalariesCompositeId) &&
+        empNo == ((SalariesCompositeId)o).getEmpNo() &&
+                fromDate == ((SalariesCompositeId)o).getFromDate());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getEmpNo();
+        result = 31 * result + getFromDate().hashCode();
+        return result;
     }
 }
