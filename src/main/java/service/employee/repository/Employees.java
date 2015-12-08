@@ -41,8 +41,8 @@ public class Employees{
     @JoinColumn(name="empNo")
     private DepartmentEmployee departmentEmployee;
 
-    public DepartmentEmployee getDepartmentEmployee() {
-        return departmentEmployee;
+    public Departments getDepartmentEmployee() {
+        return departmentEmployee.getDepartments();
     }
 
     public void setDepartmentEmployee(DepartmentEmployee departmentEmployee) {

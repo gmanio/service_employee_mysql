@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="salaries")
-@IdClass(SalariesCompositeId.class)
+@IdClass(value= Salaries.SalariesCompositeId.class)
 public class Salaries {
     @Id
     @Column(name = "emp_no", insertable = false, updatable = false)
@@ -56,49 +56,49 @@ public class Salaries {
     public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
-}
 
-@IdClass(SalariesCompositeId.class)
-class SalariesCompositeId implements Serializable {
-    private int empNo;
-    private Date fromDate;
+    @IdClass(SalariesCompositeId.class)
+    static class SalariesCompositeId implements Serializable {
+        private int empNo;
+        private Date fromDate;
 
-    public SalariesCompositeId() {
+        public SalariesCompositeId() {
 
-    }
+        }
 
-    public SalariesCompositeId(int empNo, Date fromDate) {
-        this.empNo = empNo;
-        this.fromDate = fromDate;
-    }
+        public SalariesCompositeId(int empNo, Date fromDate) {
+            this.empNo = empNo;
+            this.fromDate = fromDate;
+        }
 
-    public int getEmpNo() {
-        return empNo;
-    }
+        public int getEmpNo() {
+            return empNo;
+        }
 
-    public void setEmpNo(int empNo) {
-        this.empNo = empNo;
-    }
+        public void setEmpNo(int empNo) {
+            this.empNo = empNo;
+        }
 
-    public Date getFromDate() {
-        return fromDate;
-    }
+        public Date getFromDate() {
+            return fromDate;
+        }
 
-    public void setFromDate(Date fromDate) {
-        this.fromDate = fromDate;
-    }
+        public void setFromDate(Date fromDate) {
+            this.fromDate = fromDate;
+        }
 
-    @Override
-    public boolean equals(Object o) {
-        return ((o instanceof SalariesCompositeId) &&
-        empNo == ((SalariesCompositeId)o).getEmpNo() &&
-                fromDate == ((SalariesCompositeId)o).getFromDate());
-    }
+        @Override
+        public boolean equals(Object o) {
+            return ((o instanceof SalariesCompositeId) &&
+                    empNo == ((SalariesCompositeId)o).getEmpNo() &&
+                    fromDate == ((SalariesCompositeId)o).getFromDate());
+        }
 
-    @Override
-    public int hashCode() {
-        int result = getEmpNo();
-        result = 31 * result + getFromDate().hashCode();
-        return result;
+        @Override
+        public int hashCode() {
+            int result = getEmpNo();
+            result = 31 * result + getFromDate().hashCode();
+            return result;
+        }
     }
 }

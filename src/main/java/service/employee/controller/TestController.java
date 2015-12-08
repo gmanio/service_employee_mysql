@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import service.employee.repository.Employees;
 import service.employee.repository.EmployeesInterface;
 import service.employee.repository.Salaries;
+import service.employee.repository.SalariesInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,9 @@ public class TestController {
     @Autowired
     EmployeesInterface employeesInterface;
 
+    @Autowired
+    SalariesInterface salariesInterface;
+
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     @ResponseBody
     @Cacheable(cacheNames = "employee")
@@ -34,11 +38,12 @@ public class TestController {
 
         Employees emp = employeesInterface.findOne(Id);
 
-        for (Salaries salary : emp.getSararies()) {
-            salary.setSalary("1111111");
-        }
+//        for (Salaries salary : emp.getSararies()) {
+//            salary.setSalary("1111111");
+//            salariesInterface.save(salary);
+//        }
 
-        return employeesInterface.findOne(Id);
+        return emp;
     }
 
     @RequestMapping(value = "/getGender", method = RequestMethod.GET)

@@ -46,5 +46,4 @@ public class DepartmentEmployee{
     public void setDeptNo(String deptNo) {
         this.deptNo = deptNo;
     }
-
 }
