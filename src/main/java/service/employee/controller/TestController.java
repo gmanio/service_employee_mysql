@@ -7,7 +7,6 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import service.employee.repository.Employees;
 import service.employee.repository.EmployeesInterface;
-import service.employee.repository.Salaries;
 import service.employee.repository.SalariesInterface;
 
 import java.util.ArrayList;
