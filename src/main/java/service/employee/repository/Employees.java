@@ -1,13 +1,10 @@
 package service.employee.repository;
 
-import javafx.scene.input.DataFormat;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,9 +13,10 @@ import java.util.List;
  */
 @Entity
 @Table(name="employees")
+@Getter
+@Setter
 public class Employees{
     private static SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-
     @Id
     @Column(name = "emp_no", nullable = false)
     private int empNo;
@@ -51,60 +49,4 @@ public class Employees{
 
     @OneToMany(mappedBy = "empNo")
     private List<Salaries> sararies;
-
-    public List<Salaries> getSararies() {
-        return sararies;
-    }
-
-    public void setSararies(List<Salaries> sararies) {
-        this.sararies = sararies;
-    }
-
-    public int getEmpNo() {
-        return empNo;
-    }
-
-    public void setEmpNo(int empNo) {
-        this.empNo = empNo;
-    }
-
-    public String getBirthDate() {
-        return this.format.format(birthDate);
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getHireDate() {
-        return this.format.format(hireDate);
-    }
-
-    public void setHireDate(Date hireDate) {
-        this.hireDate = hireDate;
-    }
 }

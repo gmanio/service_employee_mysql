@@ -2,6 +2,9 @@ package service.employee.repository; /**
  * Created by gmanpark on 2015-11-30.
  */
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -9,6 +12,8 @@ import java.util.Date;
 @Entity
 @Table(name="salaries")
 @IdClass(value= Salaries.SalariesCompositeId.class)
+@Getter
+@Setter
 public class Salaries {
     @Id
     @Column(name = "emp_no", insertable = false, updatable = false)
@@ -25,39 +30,9 @@ public class Salaries {
     @Temporal(TemporalType.TIMESTAMP)
     private Date toDate;
 
-    public int getEmpNo() {
-        return empNo;
-    }
-
-    public void setEmpNo(int empNo) {
-        this.empNo = empNo;
-    }
-
-    public String getSalary() {
-        return salary;
-    }
-
-    public void setSalary(String salary) {
-        this.salary = salary;
-    }
-
-    public Date getFromDate() {
-        return fromDate;
-    }
-
-    public void setFromDate(Date fromDate) {
-        this.fromDate = fromDate;
-    }
-
-    public Date getToDate() {
-        return toDate;
-    }
-
-    public void setToDate(Date toDate) {
-        this.toDate = toDate;
-    }
-
     @IdClass(SalariesCompositeId.class)
+    @Getter
+    @Setter
     static class SalariesCompositeId implements Serializable {
         private int empNo;
         private Date fromDate;
