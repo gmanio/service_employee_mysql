@@ -11,4 +11,5 @@ public class ServiceEmployeeMysqlApplication {
         app.setBannerMode(Banner.Mode.OFF);
         app.run(args);
     }
+
 }
