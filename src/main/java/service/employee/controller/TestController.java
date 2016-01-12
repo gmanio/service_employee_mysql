@@ -45,22 +45,9 @@ public class TestController {
         return emp;
     }
 
-    @RequestMapping(value = "/getGender", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Employees> getGender(@RequestParam(value = "gender") String gender){
-        return employeesInterface.findByGender(gender);
-    }
-
-
-    @RequestMapping(value = "/getName", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Employees> getName(@RequestParam(value = "name") String lastname){
-        return employeesInterface.findByLastName(lastname);
-    }
-
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     @ResponseBody
-    @Cacheable(cacheNames = "employees")
+    @Cacheable(cacheNames = "cache_emp_All")
     public List<Employees> getAll() {
         List<Employees> empList = employeesInterface.findAll();
         List<Employees> emptyList = new ArrayList<>();

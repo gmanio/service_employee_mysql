@@ -15,5 +15,6 @@ public class ListFilter {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     public void streamFilter(){
+
     }
 }
