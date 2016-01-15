@@ -77,20 +77,4 @@ public class TestController {
         return emptyList;
     }
 
-
-    @RequestMapping(value = "/getFromTo", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Employees> getAll2(@RequestParam(value = "start") int Start, @RequestParam(value = "end") int End) {
-        List<Employees> empList = employeesInterface.findAll();
-        List<Employees> emptyList = new ArrayList<>();
-
-
-        for (int i = Start; i < End; i++) {
-            emptyList.add(empList.get(i));
-        }
-
-        return emptyList;
-    }
-
-
 }

@@ -12,15 +12,15 @@ import service.employee.repository.BatchRepository;
 @RestController
 public class BatchController {
 
-    @Autowired
-    private BatchRepository batchRepository;
-
-    @Scheduled(cron="*/5 * * * * MON-FRI")
-//    @RequestMapping(name = "/batch", method = RequestMethod.GET)
-    public void tense(){
-        BatchModel batchModel = new BatchModel();
-        batchModel.setStr("test");
-
-        batchRepository.save(batchModel);
-    }
+//    @Autowired
+//    private BatchRepository batchRepository;
+//
+//    @Scheduled(cron="*/5 * * * * MON-FRI")
+////    @RequestMapping(name = "/batch", method = RequestMethod.GET)
+//    public void tense(){
+//        BatchModel batchModel = new BatchModel();
+//        batchModel.setStr("test");
+//
+//        batchRepository.save(batchModel);
+//    }
 }
