@@ -23,7 +23,6 @@ public class Employees{
     @Column(name = "birth_date", columnDefinition="DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date birthDate;
-
     @Column(name = "first_name", nullable = false)
     private String firstName;
     @Column(name = "last_name", nullable = false)
@@ -35,17 +34,9 @@ public class Employees{
     @Temporal(TemporalType.TIMESTAMP)
     private Date hireDate;
 
-    @OneToOne
-    @JoinColumn(name="empNo")
-    private DepartmentEmployee departmentEmployee;
-
-    public Departments getDepartmentEmployee() {
-        return departmentEmployee.getDepartments();
-    }
-
-    public void setDepartmentEmployee(DepartmentEmployee departmentEmployee) {
-        this.departmentEmployee = departmentEmployee;
-    }
+//    @OneToOne
+//    @JoinColumn(name="empNo")
+//    private DepartmentEmployee departmentEmployee;
 
     @OneToMany(mappedBy = "empNo")
     private List<Salaries> sararies;
