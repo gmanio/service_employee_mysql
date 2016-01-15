@@ -11,4 +11,6 @@ import {Component} from 'angular2/core';
 //        <div>테스트</div>
 //    `
 //})
-export class AppComponent { }
+export class AppComponent {
+
+}

@@ -1,5 +1,6 @@
 package service.employee.controller;
 
+import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import service.employee.repository.Employees;
 import service.employee.repository.EmployeesInterface;
 import service.employee.repository.SalariesInterface;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,8 @@ public class TestController {
     @ResponseBody
     @Cacheable(cacheNames = "employee")
     public Employees get(@RequestParam(value = "id") int Id) {
+
+        Document document = new Document("hello");
 
 //        int tableSize = employeesInterface.findAll().size();
 
@@ -85,4 +89,21 @@ public class TestController {
 
         return emptyList;
     }
+
+
+    @RequestMapping(value = "/getFromTo", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Employees> getAll2(@RequestParam(value = "start") int Start, @RequestParam(value = "end") int End) {
+        List<Employees> empList = employeesInterface.findAll();
+        List<Employees> emptyList = new ArrayList<>();
+
+
+        for (int i = Start; i < End; i++) {
+            emptyList.add(empList.get(i));
+        }
+
+        return emptyList;
+    }
+
+
 }
