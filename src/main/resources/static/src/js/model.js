@@ -1,4 +1,7 @@
 class Model {
+    /**
+     * @Constructor
+     */
     constructor(){
         this.name = "model";
         this.nCount = 0;

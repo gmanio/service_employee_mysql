@@ -55,34 +55,75 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _model = __webpack_require__(2);
+	var _Model = __webpack_require__(4);
 	
-	var _model2 = _interopRequireDefault(_model);
+	var _Model2 = _interopRequireDefault(_Model);
+	
+	var _MainView = __webpack_require__(3);
+	
+	var _MainView2 = _interopRequireDefault(_MainView);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var App = function () {
+	    /**
+	     * @Constructor
+	     */
+	
 	    function App() {
 	        _classCallCheck(this, App);
 	
-	        this.model = new _model2.default();
-	        this.onLoad();
+	        this.model = new _Model2.default();
+	        this.loadComponent();
 	    }
 	
 	    _createClass(App, [{
-	        key: "onLoad",
-	        value: function onLoad() {
-	            console.dir(this.model);
+	        key: "loadComponent",
+	        value: function loadComponent() {
+	            this.mainView = new _MainView2.default();
 	        }
 	    }]);
 	
 	    return App;
 	}();
+	
+	$(document).ready(function () {
+	
+	    // ** Entry Poiont **
+	    new App();
+	});
 
 /***/ },
-/* 2 */
+/* 2 */,
+/* 3 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var MainView =
+	/**
+	 * @Constructor
+	 */
+	function MainView() {
+	    _classCallCheck(this, MainView);
+	
+	    // main view
+	
+	    console.log("main view");
+	};
+	
+	exports.default = MainView;
+
+/***/ },
+/* 4 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -96,6 +137,10 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var Model = function () {
+	    /**
+	     * @Constructor
+	     */
+	
 	    function Model() {
 	        _classCallCheck(this, Model);
 	

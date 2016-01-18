@@ -1,12 +1,24 @@
-import Model from "./model";
+import Model from "./Model";
+import MainView from "./MainView";
 
-class App{
-    constructor(){
+class App {
+    /**
+     * @Constructor
+     */
+    constructor() {
         this.model = new Model();
-        this.onLoad();
+        this.loadComponent();
     }
 
-    onLoad(){
-        console.dir(this.model);
+    loadComponent() {
+        this.mainView = new MainView();
     }
 }
+
+$(document).ready(function(){
+
+    // ** Entry Poiont **
+    new App();
+
+});
+
