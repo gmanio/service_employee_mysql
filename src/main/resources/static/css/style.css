@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* NHN Web UIT development SMY, PJM 150119 */
+
+
+
+/* Common */
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0}
+body,input,textarea,select,button,table{font-family:'나눔고딕',NanumGothic,Helvetica,'돋움',dotum,sans-serif;font-size:12px}
+img,fieldset{border:0}
+ul,ol{list-style:none}
+em,address{font-style:normal}
+a{text-decoration:none}
+a:hover,a:active,a:focus{text-decoration:none}
+.blind{visibility:hidden;overflow:hidden;position:absolute;top:0;left:0;width:1px;height:1px;font-size:0;line-height:0}
+
+/* Common */
+.sp{background:url(https://static.nid.naver.com/images/web/devcenter/sp_ico_os.png) no-repeat}
+
+/* Header */
+
+/* Container */
+
+/* Footer */

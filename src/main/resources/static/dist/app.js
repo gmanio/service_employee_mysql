@@ -55,11 +55,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _Model = __webpack_require__(4);
-	
-	var _Model2 = _interopRequireDefault(_Model);
-	
-	var _MainView = __webpack_require__(3);
+	var _MainView = __webpack_require__(2);
 	
 	var _MainView2 = _interopRequireDefault(_MainView);
 	
@@ -68,14 +64,9 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var App = function () {
-	    /**
-	     * @Constructor
-	     */
-	
 	    function App() {
 	        _classCallCheck(this, App);
 	
-	        this.model = new _Model2.default();
 	        this.loadComponent();
 	    }
 	
@@ -90,40 +81,58 @@
 	}();
 	
 	$(document).ready(function () {
-	
 	    // ** Entry Poiont **
 	    new App();
 	});
 
 /***/ },
-/* 2 */,
-/* 3 */
-/***/ function(module, exports) {
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
+	var _Model = __webpack_require__(3);
+	
+	var _Model2 = _interopRequireDefault(_Model);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var MainView =
-	/**
-	 * @Constructor
-	 */
-	function MainView() {
-	    _classCallCheck(this, MainView);
+	var MainView = function () {
+	    function MainView() {
+	        _classCallCheck(this, MainView);
 	
-	    // main view
+	        this.onAjax();
+	    }
 	
-	    console.log("main view");
-	};
+	    _createClass(MainView, [{
+	        key: "onAjax",
+	        value: function onAjax() {
+	            var oAjax = $.ajax({
+	                url: "/get",
+	                data: { id: 10001 },
+	                success: $.proxy(this.renderTmpl, this)
+	            });
+	        }
+	    }, {
+	        key: "renderTmpl",
+	        value: function renderTmpl(res) {}
+	    }]);
+	
+	    return MainView;
+	}();
 	
 	exports.default = MainView;
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports) {
 
 	"use strict";

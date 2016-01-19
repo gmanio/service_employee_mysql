@@ -1,5 +1,4 @@
 var options = {
-    watch: true,
     // devtool을 sourcemap으로 설정하면 .map 파일이 생성됨
     devtool: 'sourcemap',
     resolve: {

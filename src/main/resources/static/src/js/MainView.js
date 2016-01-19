@@ -1,11 +1,21 @@
-class MainView{
-    /**
-     * @Constructor
-     */
-    constructor(){
-        // main view
+import Model from "./Model";
 
-        console.log("main view");
+class MainView {
+
+    constructor() {
+        this.onAjax();
+    }
+
+    onAjax() {
+        var oAjax = $.ajax({
+            url: "/get",
+            data: {id: 10001},
+            success: $.proxy(this.renderTmpl, this)
+        })
+    }
+
+    renderTmpl(res) {
+
     }
 
 }
